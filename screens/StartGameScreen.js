@@ -1,6 +1,9 @@
-import { Alert, StyleSheet, TextInput, View } from "react-native";
+import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import PrimaryButton from "../component/targetApp/PrimaryButton";
 import { useState } from "react";
+import Title from "../component/targetApp/Title";
+import Colors from "../constants/colors";
+import Card from "../component/targetApp/Card";
 
 const StartGameScreen = ({ handlePickedNumber }) => {
   //state
@@ -32,20 +35,24 @@ const StartGameScreen = ({ handlePickedNumber }) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-        value={enteredNumber}
-        onChangeText={handleEnteredNumber}
-      />
-      <View style={styles.buttonsContainer}>
-        <PrimaryButton onPress={handleReset}>Reset</PrimaryButton>
-        <PrimaryButton onPress={handleConfirm}>Confirm</PrimaryButton>
-      </View>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <Text style={styles.instructionText}>Enter a Number</Text>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={enteredNumber}
+          onChangeText={handleEnteredNumber}
+        />
+        <View style={styles.buttonsContainer}>
+          <PrimaryButton onPress={handleReset}>Reset</PrimaryButton>
+          <PrimaryButton onPress={handleConfirm}>Confirm</PrimaryButton>
+        </View>
+      </Card>
     </View>
   );
 };
@@ -53,17 +60,14 @@ const StartGameScreen = ({ handlePickedNumber }) => {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    // flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 24,
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    padding: 16,
-    backgroundColor: "#3b021f",
-    borderRadius: 8,
-    //android only for boxShadow ( elevation )
-    elevation: 8,
+    alignItems: "center",
+  },
+  instructionText: {
+    color: Colors.accent500,
+    fontSize: 24,
   },
   numberInput: {
     fontSize: 32,

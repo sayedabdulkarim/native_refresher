@@ -1,8 +1,10 @@
 import { Alert, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Title from "../component/targetApp/Title";
 import { useEffect, useState } from "react";
 import NumberContainer from "../component/targetApp/NumberContainer";
 import PrimaryButton from "../component/targetApp/PrimaryButton";
+import Card from "../component/targetApp/Card";
 
 const generateRandomBetween = (min, max, exclude) => {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -55,17 +57,17 @@ const GameScreen = ({ userNumber, handleGameOver }) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
+      <Card>
         <Text>Higher or Lower</Text>
-        <View>
+        <View style={styles.buttonsContainer}>
           <PrimaryButton onPress={() => handleNextGuess("higher")}>
-            +
+            <Ionicons name="md-add-circle" size={24} color={"white"} />
           </PrimaryButton>
           <PrimaryButton onPress={() => handleNextGuess("lower")}>
-            -
+            <Ionicons name="md-remove-circle" size={24} color={"white"} />
           </PrimaryButton>
         </View>
-      </View>
+      </Card>
 
       <View>
         <Text>Log Rounds</Text>
@@ -89,5 +91,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#ddb52f",
     padding: 12,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
   },
 });
