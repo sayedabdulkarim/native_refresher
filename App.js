@@ -2,13 +2,13 @@ import { View } from "react-native";
 
 //comp
 // import GoalApp from "./component/goalApp";
-import TargetApp from "./component/targetApp";
+import StartGameScreen from "./screens/StartGameScreen";
 
 const App = () => {
   return (
     <>
       {/* <GoalApp /> */}
-      <TargetApp />
+      <StartGameScreen />
     </>
   );
 };
