@@ -7,7 +7,7 @@ const StartGameScreen = () => {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   //func
-  const handleEnteredNumber = () => {
+  const handleEnteredNumber = (enteredNumber) => {
     setEnteredNumber(enteredNumber);
   };
 
@@ -16,11 +16,12 @@ const StartGameScreen = () => {
   };
 
   const handleConfirm = () => {
-    console.log("clicked");
+    // console.log("clicked");
     const choosenNumber = parseInt(enteredNumber);
 
     if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 99) {
       //show alert
+      console.log(typeof choosenNumber);
       Alert.alert(
         "Invalid Number!",
         "Number has to be number between 1 to 99",
@@ -38,7 +39,7 @@ const StartGameScreen = () => {
         autoCapitalize="none"
         autoCorrect={false}
         value={enteredNumber}
-        onChangeText={() => handleEnteredNumber()}
+        onChangeText={handleEnteredNumber}
       />
       <View style={styles.buttonsContainer}>
         <PrimaryButton onPress={handleReset}>Reset</PrimaryButton>
