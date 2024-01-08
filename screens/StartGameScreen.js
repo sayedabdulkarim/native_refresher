@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     marginTop: 100,
     padding: 16,
-    backgroundColor: "#4e0329",
+    backgroundColor: "#3b021f",
     borderRadius: 8,
     //android only for boxShadow ( elevation )
     elevation: 8,
