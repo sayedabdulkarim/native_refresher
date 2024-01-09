@@ -4,7 +4,7 @@ import Title from "../component/targetApp/Title";
 import Colors from "../constants/colors";
 import PrimaryButton from "../component/targetApp/PrimaryButton";
 
-const GameOverScreen = () => {
+const GameOverScreen = ({ roundsNumber, userNumber, onStartNewGame }) => {
   return (
     <View style={styles.rootContainer}>
       <Title>Game Over!</Title>
@@ -16,10 +16,12 @@ const GameOverScreen = () => {
       </View>
       <View>
         <Text style={styles.summaryText}>
-          Your phone needed <Text style={styles.highlightText}>X</Text> round to
-          guess the number <Text style={styles.highlightText}>Y</Text>.
+          Your phone needed{" "}
+          <Text style={styles.highlightText}>{roundsNumber}</Text> round to
+          guess the number{" "}
+          <Text style={styles.highlightText}>{userNumber}</Text>.
         </Text>
-        <PrimaryButton>Start New Game</PrimaryButton>
+        <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
       </View>
     </View>
   );
