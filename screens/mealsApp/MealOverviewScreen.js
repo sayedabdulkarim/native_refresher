@@ -1,28 +1,36 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { MEALS } from "../../data/dummy-data";
+import MealItem from "../../component/mealsApp/MealItem";
 
 const MealOverviewScreen = ({ navigation, route }) => {
   const { categoryId } = route.params;
+
+  const displayedMeals = MEALS.filter((i) => {
+    return i.categoryIds.indexOf(categoryId) >= 0;
+  });
+
+  const renderMeaItem = (itemData) => {
+    return <MealItem title={itemData?.item?.title} />;
+  };
+
   return (
     <View style={styles.container}>
-      <Text>MEAL OVERVIEW SCREENnn {categoryId}</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
-      <Text>MEAL OVERVIEW SCREEN</Text>
+      {/* <Text
+        onPress={() =>
+          console.log({
+            // MEALS,
+            displayedMeals,
+            categoryId,
+          })
+        }
+      >
+        Click
+      </Text> */}
+      <FlatList
+        data={displayedMeals}
+        keyExtractor={(item) => item.id}
+        renderItem={renderMeaItem}
+      />
     </View>
   );
 };
