@@ -11,10 +11,9 @@ const App = () => {
     <>
       <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: true }}>
           <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
         </Stack.Navigator>
-        <CategoriesScreen />
       </NavigationContainer>
     </>
   );
