@@ -2,6 +2,7 @@ import { ImageBackground, SafeAreaView, StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 //comp
 // import GoalApp from "./component/goalApp";
 import StartGameScreen from "./screens/StartGameScreen";
@@ -57,18 +58,21 @@ const App = () => {
   }
 
   return (
-    <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.rootScreen}>
-      {/* <GoalApp /> */}
-      <ImageBackground
-        source={require("./assets/images/background.png")}
-        resizeMode="cover"
-        style={styles.rootScreen}
-        imageStyle={styles.backgroundImage}
-      >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-        {/* <StartGameScreen /> */}
-      </ImageBackground>
-    </LinearGradient>
+    <>
+      <StatusBar style="light" />
+      <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.rootScreen}>
+        {/* <GoalApp /> */}
+        <ImageBackground
+          source={require("./assets/images/background.png")}
+          resizeMode="cover"
+          style={styles.rootScreen}
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+          {/* <StartGameScreen /> */}
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 };
 

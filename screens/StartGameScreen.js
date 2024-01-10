@@ -1,4 +1,13 @@
-import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Dimensions,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import PrimaryButton from "../component/targetApp/PrimaryButton";
 import { useState } from "react";
 import Title from "../component/targetApp/Title";
@@ -6,6 +15,8 @@ import Colors from "../constants/colors";
 import Card from "../component/targetApp/Card";
 
 const StartGameScreen = ({ handlePickedNumber }) => {
+  //misc
+  const { width, height } = useWindowDimensions();
   //state
   const [enteredNumber, setEnteredNumber] = useState("");
 
@@ -34,35 +45,45 @@ const StartGameScreen = ({ handlePickedNumber }) => {
     handlePickedNumber(choosenNumber);
   };
 
+  //responsive css
+  const marginTopDistance = height < 380 ? 30 : 150;
+
   return (
-    <View style={styles.rootContainer}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <Text style={styles.instructionText}>Enter a Number</Text>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          value={enteredNumber}
-          onChangeText={handleEnteredNumber}
-        />
-        <View style={styles.buttonsContainer}>
-          <PrimaryButton onPress={handleReset}>Reset</PrimaryButton>
-          <PrimaryButton onPress={handleConfirm}>Confirm</PrimaryButton>
-        </View>
-      </Card>
-    </View>
+    <KeyboardAvoidingView style={styles.mainContainer}>
+      <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
+        <Title>Guess My Number</Title>
+        <Card>
+          <Text style={styles.instructionText}>Enter a Number</Text>
+          <TextInput
+            style={styles.numberInput}
+            maxLength={2}
+            keyboardType="number-pad"
+            autoCapitalize="none"
+            autoCorrect={false}
+            value={enteredNumber}
+            onChangeText={handleEnteredNumber}
+          />
+          <View style={styles.buttonsContainer}>
+            <PrimaryButton onPress={handleReset}>Reset</PrimaryButton>
+            <PrimaryButton onPress={handleConfirm}>Confirm</PrimaryButton>
+          </View>
+        </Card>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
 export default StartGameScreen;
 
+const { height: deviceHeight, width: deviceWidth } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
-    marginTop: 100,
+    marginTop: deviceHeight < 380 ? 30 : 150,
     alignItems: "center",
   },
   instructionText: {
