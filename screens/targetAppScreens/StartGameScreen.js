@@ -8,11 +8,11 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import PrimaryButton from "../component/targetApp/PrimaryButton";
+import PrimaryButton from "../../component/targetApp/PrimaryButton";
 import { useState } from "react";
-import Title from "../component/targetApp/Title";
-import Colors from "../constants/colors";
-import Card from "../component/targetApp/Card";
+import Title from "../../component/targetApp/Title";
+import Colors from "../../constants/colors";
+import Card from "../../component/targetApp/Card";
 
 const StartGameScreen = ({ handlePickedNumber }) => {
   //misc

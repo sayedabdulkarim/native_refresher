@@ -1,10 +1,10 @@
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Title from "../component/targetApp/Title";
+import Title from "../../component/targetApp/Title";
 import { useEffect, useState } from "react";
-import NumberContainer from "../component/targetApp/NumberContainer";
-import PrimaryButton from "../component/targetApp/PrimaryButton";
-import Card from "../component/targetApp/Card";
+import NumberContainer from "../../component/targetApp/NumberContainer";
+import PrimaryButton from "../../component/targetApp/PrimaryButton";
+import Card from "../../component/targetApp/Card";
 
 const generateRandomBetween = (min, max, exclude) => {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;

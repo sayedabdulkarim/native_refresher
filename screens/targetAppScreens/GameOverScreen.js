@@ -1,8 +1,8 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import Title from "../component/targetApp/Title";
-import Colors from "../constants/colors";
-import PrimaryButton from "../component/targetApp/PrimaryButton";
+import Title from "../../component/targetApp/Title";
+import Colors from "../../constants/colors";
+import PrimaryButton from "../../component/targetApp/PrimaryButton";
 
 const GameOverScreen = ({ roundsNumber, userNumber, onStartNewGame }) => {
   return (
@@ -10,7 +10,8 @@ const GameOverScreen = ({ roundsNumber, userNumber, onStartNewGame }) => {
       <Title>Game Over!</Title>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../assets/images/success.png")}
+          // source={require("../../assets/images/success.png")}
+          source={require("../../assets/images/success.png")}
           style={styles.image}
         />
       </View>
