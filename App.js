@@ -1,10 +1,11 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import TargetApp from "./component/targetApp";
 const App = () => {
   return (
     <View style={styles.rootScreen}>
-      <TargetApp />
+      {/* <TargetApp /> */}
+      <Text>Hello world</Text>
     </View>
   );
 };
