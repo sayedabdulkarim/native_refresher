@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 //Apps
 // import TargetApp from "./component/targetApp";
+import MealApp from "./screens/mealsApp";
 
 const App = () => {
   return (
     <View style={styles.rootScreen}>
       {/* <TargetApp /> */}
-      <Text>Hello world</Text>
+      <MealApp />
+      {/* <Text>Hello world</Text> */}
     </View>
   );
 };
