@@ -10,7 +10,17 @@ const MealOverviewScreen = ({ navigation, route }) => {
   });
 
   const renderMeaItem = (itemData) => {
-    return <MealItem title={itemData?.item?.title} />;
+    const { title, imageUrl, duration, complexity, affordability } =
+      itemData?.item;
+    return (
+      <MealItem
+        title={title}
+        imageUrl={imageUrl}
+        duration={duration}
+        complexity={complexity}
+        affordability={affordability}
+      />
+    );
   };
 
   return (

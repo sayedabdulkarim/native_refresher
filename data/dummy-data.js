@@ -311,7 +311,7 @@ export const MEALS = [
     "Asparagus Salad with Cherry Tomatoes",
     "luxurious",
     "simple",
-    "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
+    "https://img.freepik.com/free-photo/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese_90220-1063.jpg?size=338&ext=jpg&ga=GA1.1.1412446893.1704844800&semt=sph",
     30,
     [
       "White and Green Asparagus",
