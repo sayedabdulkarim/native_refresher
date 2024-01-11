@@ -1,17 +1,19 @@
 import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import WelcomeScreen from "./WelcomeScreen";
+import UserScreen from "./UserScreen";
+
+const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-      <Text>App</Text>
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+        <Drawer.Screen name="User" component={UserScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 };
 
