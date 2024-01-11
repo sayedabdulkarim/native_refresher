@@ -43,7 +43,7 @@ const App = () => {
             // }}
           />
 
-          <Stack.Screen name="MealDetail" component={MealDetailsScreeen} />
+          <Stack.Screen name="MealDetails" component={MealDetailsScreeen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
