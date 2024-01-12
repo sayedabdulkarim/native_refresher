@@ -27,6 +27,12 @@ const App = () => {
           sceneContainerStyle: {
             backgroundColor: "#3f2f25",
           },
+          drawerContentStyle: {
+            backgroundColor: "#351401",
+          },
+          drawerInactiveTintColor: "white",
+          drawerActiveTintColor: "#351401",
+          drawerActiveBackgroundColor: "#e4baa1",
         }}
       >
         <Drawer.Screen
@@ -34,12 +40,20 @@ const App = () => {
           component={CategoriesScreen}
           options={{
             title: "All Categories",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="home" color={color} size={size} />
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="list" color={color} size={size} />
             ),
           }}
         />
-        <Drawer.Screen name="Favorites" component={FavoriteScreen} />
+        <Drawer.Screen
+          name="Favorites"
+          component={FavoriteScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="star" color={color} size={size} />
+            ),
+          }}
+        />
       </Drawer.Navigator>
     );
   };
