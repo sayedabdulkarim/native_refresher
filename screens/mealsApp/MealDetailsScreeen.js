@@ -10,16 +10,20 @@ import { MEALS } from "../../data/dummy-data";
 import MealDetails from "../../component/mealsApp/MealDetails";
 import Subtitle from "../../component/mealsApp/mealDetailComponent/Subtitle";
 import List from "../../component/mealsApp/mealDetailComponent/List";
-import { useEffect, useLayoutEffect } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 import IconButton from "../../component/mealsApp/IconButton";
+import { FavoritesContext } from "../../store/context/favoritesContext";
 
 const MealDetailsScreeen = ({ route, navigation }) => {
   //misc
+  const { ids, addFavorites, removeFavorites } = useContext(FavoritesContext);
   const { mealId } = route.params;
+  const mealIsFavorite = ids.includes(mealId);
   const selectedMeal = MEALS.find((i) => i.id === mealId);
   //func
-  const handleButtonPressHandler = () => {
-    console.log("Hello");
+  const handleFavoriteHandler = (id) => {
+    mealIsFavorite ? removeFavorites(id) : addFavorites(id);
+    // console.log({ ids, addFavorites, removeFavorites, MEALS }, "Hello");
   };
   //async
   useLayoutEffect(() => {
@@ -27,15 +31,15 @@ const MealDetailsScreeen = ({ route, navigation }) => {
       headerRight: () => {
         return (
           <IconButton
-            icon={"star"}
+            // icon={"star"}
+            icon={mealIsFavorite ? "star" : "star-outline"}
             color={"white"}
-            onPress={handleButtonPressHandler}
+            onPress={() => handleFavoriteHandler(mealId)}
           />
         );
-        // return <Button title="Tap Me!" onPress={handleButtonPressHandler} />;
       },
     });
-  }, [navigation, handleButtonPressHandler]);
+  }, [navigation, handleFavoriteHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
