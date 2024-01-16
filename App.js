@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 //Apps
+import ExpenseApp from "./screens/expenseTrackerApp";
 // import TargetApp from "./component/targetApp";
-import MealApp from "./screens/mealsApp";
+// import MealApp from "./screens/mealsApp";
 // import DrawerApp from "./screens/drawerApp";
 
 /**
@@ -11,8 +12,9 @@ import MealApp from "./screens/mealsApp";
 const App = () => {
   return (
     <View style={styles.rootScreen}>
+      <ExpenseApp />
       {/* <TargetApp /> */}
-      <MealApp />
+      {/* <MealApp /> */}
       {/* <DrawerApp /> */}
     </View>
   );
