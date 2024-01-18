@@ -62,7 +62,14 @@ const App = () => {
     <>
       <StatusBar style={"auto"} />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: GlobalStyles.colors.primary500,
+            },
+            headerTintColor: "white ",
+          }}
+        >
           <Stack.Screen
             name="ExpensesOverview"
             component={ExpenseOverview}
@@ -70,7 +77,15 @@ const App = () => {
               headerShown: false,
             }}
           />
-          <Stack.Screen name="MangeExpense" component={ManageExpense} />
+          <Stack.Screen
+            name="MangeExpense"
+            component={ManageExpense}
+            options={{
+              title: "Manage Expense",
+              presentation: "modal",
+              headerTintColor: "white",
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
