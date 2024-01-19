@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
 import Button from "./Button";
@@ -29,6 +29,17 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
       date: new Date(date),
       description,
     };
+
+    const amountIsValid = !isNaN(amount) && amount > 0;
+    const dateIsValid = date.toString() !== "Invalid Date";
+    const descriptionIsValid = description.trim().length > 0;
+
+    if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
+      //show
+      Alert.alert("Invalid input, Please check your input values.");
+      return;
+    }
+
     onSubmit(payload);
   };
   //
