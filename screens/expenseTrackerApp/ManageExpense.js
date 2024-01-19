@@ -1,5 +1,5 @@
 import { useContext, useLayoutEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import IconButton from "../../component/expenseApp/IconButton";
 import { GlobalStyles } from "../../constants/styles";
 import Button from "../../component/expenseApp/Button";
@@ -40,6 +40,9 @@ const ManageExpense = ({ route, navigation }) => {
   }, [navigation, isEditing]);
   return (
     <View style={styles.container}>
+      {/*  */}
+      <TextInput />
+      {/*  */}
       <View style={styles.buttons}>
         <Button
           mode={"flat"}
