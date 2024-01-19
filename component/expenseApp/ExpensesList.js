@@ -16,7 +16,6 @@ const renderExpenseItem = (itemData) => {
 const ExpensesList = ({ expenses }) => {
   return (
     <View>
-      <Text onPress={() => console.log(expenses)}>Hello</Text>
       <FlatList
         data={expenses}
         keyExtractor={(item) => item.id}
