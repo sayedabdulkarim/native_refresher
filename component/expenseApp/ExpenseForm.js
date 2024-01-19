@@ -3,12 +3,14 @@ import Input from "./Input";
 import { useState } from "react";
 import Button from "./Button";
 
-const ExpenseForm = ({ onCancel, onSubmit, isEditing }) => {
+const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
   //state
   const [inputValues, setInputValues] = useState({
-    amount: "",
-    date: "",
-    description: "",
+    amount: selectedExpense ? selectedExpense?.amount.toString() : "",
+    date: selectedExpense
+      ? selectedExpense?.date.toISOString().slice(0, 10)
+      : "",
+    description: selectedExpense ? selectedExpense?.description : "",
   });
   //func
   const inputChangeHandler = (name, enteredValue) => {

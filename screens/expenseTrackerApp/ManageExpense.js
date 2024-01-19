@@ -11,6 +11,7 @@ const ManageExpense = ({ route, navigation }) => {
   const expensesCtx = useContext(ExpensesContext);
   const expenseId = route?.params?.expenseId;
   const isEditing = !!expenseId;
+  const selectedExpense = expensesCtx.expenses.find((i) => i.id === expenseId);
   //func
   const handleDeleteExpense = () => {
     expensesCtx.deleteExpenses(expenseId);
@@ -38,6 +39,7 @@ const ManageExpense = ({ route, navigation }) => {
         onCancel={handleCancel}
         onSubmit={handleConfirm}
         isEditing={isEditing}
+        selectedExpense={selectedExpense}
       />
       {/*  */}
       {/* <View style={styles.buttons}>
