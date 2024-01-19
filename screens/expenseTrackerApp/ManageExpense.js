@@ -12,12 +12,24 @@ const ManageExpense = ({ route, navigation }) => {
   const isEditing = !!expenseId;
   //func
   const handleDeleteExpense = () => {
+    expensesCtx.deleteExpenses(expenseId);
     navigation.goBack();
   };
   const handleCancel = () => {
     navigation.goBack();
   };
   const handleConfirm = () => {
+    isEditing
+      ? expensesCtx.updateExpenses(expenseId, {
+          description: "TEST UPDATED",
+          amount: 13,
+          date: new Date(),
+        })
+      : expensesCtx.addExpenses({
+          description: "TEST",
+          amount: 13,
+          date: new Date(),
+        });
     navigation.goBack();
   };
   //asyn

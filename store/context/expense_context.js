@@ -2,36 +2,6 @@ import { createContext, useReducer, useState } from "react";
 
 const dummy = [
   {
-    id: "e1",
-    description: "Shoes",
-    amount: 100,
-    date: new Date("2024-01-15"),
-  },
-  {
-    id: "e2",
-    description: "Short",
-    amount: 200,
-    date: new Date("2021-12-19"),
-  },
-  {
-    id: "e3",
-    description: "Shirt",
-    amount: 1100,
-    date: new Date("2021-10-29"),
-  },
-  {
-    id: "e4",
-    description: "Jeans",
-    amount: 2100,
-    date: new Date("2021-12-19"),
-  },
-  {
-    id: "e5",
-    description: "Jeans",
-    amount: 2100,
-    date: new Date("2021-12-19"),
-  },
-  {
     id: "e6",
     description: "Jeans",
     amount: 2100,
@@ -97,7 +67,7 @@ const expenseReducer = (state, action) => {
       });
 
     case "DELETE":
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item.id !== action.payload);
 
     default:
       return state;
@@ -116,7 +86,8 @@ function ExpensesContextProvider({ children }) {
     dispatch({ type: "DELETE", payload: id });
   };
   const updateExpenses = (id, expenseData) => {
-    dispatch({ type: "UPDATE", payload: { id, expenseData } });
+    console.log({ id, expenseData });
+    dispatch({ type: "UPDATE", payload: { id, ...expenseData } });
   };
 
   //

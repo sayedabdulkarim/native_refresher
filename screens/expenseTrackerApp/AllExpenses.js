@@ -8,7 +8,11 @@ const AllExpenses = () => {
 
   return (
     <>
-      <ExpensesOutput periodName={"Total"} expenses={expensesCtx.expenses} />
+      <ExpensesOutput
+        periodName={"Total"}
+        expenses={expensesCtx.expenses}
+        fallbackText={"No Data found."}
+      />
     </>
   );
 };
