@@ -1,11 +1,13 @@
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import IconButton from "../../component/expenseApp/IconButton";
 import { GlobalStyles } from "../../constants/styles";
 import Button from "../../component/expenseApp/Button";
+import { ExpensesContext } from "../../store/context/expense_context";
 
 const ManageExpense = ({ route, navigation }) => {
   //misc
+  const expensesCtx = useContext(ExpensesContext);
   const expenseId = route?.params?.expenseId;
   const isEditing = !!expenseId;
   //func

@@ -5,7 +5,7 @@ const dummy = [
     id: "e1",
     description: "Shoes",
     amount: 100,
-    date: new Date("2021-12-19"),
+    date: new Date("2024-01-15"),
   },
   {
     id: "e2",
@@ -48,6 +48,30 @@ const dummy = [
     description: "Jeans",
     amount: 2100,
     date: new Date("2021-12-19"),
+  },
+  {
+    id: "e9",
+    description: "T-Shirt",
+    amount: 500,
+    date: new Date("2024-01-12"),
+  },
+  {
+    id: "e10",
+    description: "Cap",
+    amount: 250,
+    date: new Date("2024-01-13"),
+  },
+  {
+    id: "e11",
+    description: "Gloves",
+    amount: 300,
+    date: new Date("2024-01-14"),
+  },
+  {
+    id: "e12",
+    description: "Jacket",
+    amount: 1200,
+    date: new Date("2024-01-15"),
   },
 ];
 
