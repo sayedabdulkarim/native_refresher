@@ -1,8 +1,35 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import Input from "./Input";
+import { useState } from "react";
+import Button from "./Button";
 
-const ExpenseForm = ({}) => {
-  const amountChangeHandler = () => {};
+const ExpenseForm = ({ onCancel, onSubmit, isEditing }) => {
+  //state
+  const [inputValues, setInputValues] = useState({
+    amount: "",
+    date: "",
+    description: "",
+  });
+  //func
+  const inputChangeHandler = (name, enteredValue) => {
+    setInputValues(() => {
+      return {
+        ...inputValues,
+        [name]: enteredValue,
+      };
+    });
+  };
+
+  const submitHandler = () => {
+    const { amount, date, description } = inputValues;
+    const payload = {
+      amount: +amount,
+      date: new Date(date),
+      description,
+    };
+    onSubmit(payload);
+  };
+  //
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Your Expense</Text>
@@ -12,7 +39,10 @@ const ExpenseForm = ({}) => {
           label={"Amount"}
           textInputConfig={{
             keyboardType: "decimal-pad",
-            onChangeText: amountChangeHandler,
+            // onChangeText: inputChangeHandler.bind(this, "amount"),
+            onChangeText: (enteredValue) =>
+              inputChangeHandler("amount", enteredValue),
+            value: inputValues.amount,
           }}
         />
         <Input
@@ -21,7 +51,9 @@ const ExpenseForm = ({}) => {
           textInputConfig={{
             placeholder: "YYYY-MM-DD",
             maxLength: 10,
-            onChangeText: () => {},
+            onChangeText: (enteredValue) =>
+              inputChangeHandler("date", enteredValue),
+            value: inputValues.date,
           }}
         />
       </View>
@@ -29,9 +61,20 @@ const ExpenseForm = ({}) => {
         label={"Description"}
         textInputConfig={{
           multiline: true,
-          onChangeText: () => {},
+          onChangeText: (enteredValue) =>
+            inputChangeHandler("description", enteredValue),
+          value: inputValues.description,
         }}
       />
+
+      <View style={styles.buttons}>
+        <Button mode={"flat"} onPress={() => onCancel()} style={styles.button}>
+          Cancel
+        </Button>
+        <Button onPress={() => submitHandler()} style={styles.button}>
+          {isEditing ? "EDIT " : "ADD"}
+        </Button>
+      </View>
     </View>
   );
 };
@@ -60,5 +103,14 @@ const styles = StyleSheet.create({
   },
   rowInput: {
     flex: 1,
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    minWidth: 120,
+    marginHorizontal: 8,
   },
 });

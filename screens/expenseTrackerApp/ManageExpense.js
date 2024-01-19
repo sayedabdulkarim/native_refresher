@@ -19,18 +19,10 @@ const ManageExpense = ({ route, navigation }) => {
   const handleCancel = () => {
     navigation.goBack();
   };
-  const handleConfirm = () => {
+  const handleConfirm = (data) => {
     isEditing
-      ? expensesCtx.updateExpenses(expenseId, {
-          description: "TEST UPDATED",
-          amount: 13,
-          date: new Date(),
-        })
-      : expensesCtx.addExpenses({
-          description: "TEST",
-          amount: 13,
-          date: new Date(),
-        });
+      ? expensesCtx.updateExpenses(expenseId, data)
+      : expensesCtx.addExpenses(data);
     navigation.goBack();
   };
   //asyn
@@ -42,9 +34,13 @@ const ManageExpense = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       {/*  */}
-      <ExpenseForm />
+      <ExpenseForm
+        onCancel={handleCancel}
+        onSubmit={handleConfirm}
+        isEditing={isEditing}
+      />
       {/*  */}
-      <View style={styles.buttons}>
+      {/* <View style={styles.buttons}>
         <Button
           mode={"flat"}
           onPress={() => handleCancel()}
@@ -55,7 +51,7 @@ const ManageExpense = ({ route, navigation }) => {
         <Button onPress={() => handleConfirm()} style={styles.button}>
           {isEditing ? "EDIT " : "ADD"}
         </Button>
-      </View>
+      </View> */}
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
