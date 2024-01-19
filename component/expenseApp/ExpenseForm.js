@@ -5,21 +5,26 @@ const ExpenseForm = ({}) => {
   const amountChangeHandler = () => {};
   return (
     <View style={styles.container}>
-      <Input
-        label={"Amount"}
-        textInputConfig={{
-          keyboardType: "decimal-pad",
-          onChangeText: amountChangeHandler,
-        }}
-      />
-      <Input
-        label={"Date"}
-        textInputConfig={{
-          placeholder: "YYYY-MM-DD",
-          maxLength: 10,
-          onChangeText: () => {},
-        }}
-      />
+      <Text style={styles.title}>Your Expense</Text>
+      <View style={styles.inputRow}>
+        <Input
+          style={styles.rowInput}
+          label={"Amount"}
+          textInputConfig={{
+            keyboardType: "decimal-pad",
+            onChangeText: amountChangeHandler,
+          }}
+        />
+        <Input
+          style={styles.rowInput}
+          label={"Date"}
+          textInputConfig={{
+            placeholder: "YYYY-MM-DD",
+            maxLength: 10,
+            onChangeText: () => {},
+          }}
+        />
+      </View>
       <Input
         label={"Description"}
         textInputConfig={{
@@ -35,15 +40,25 @@ export default ExpenseForm;
 
 const styles = StyleSheet.create({
   container: {
+    marginBottom: 20,
+    marginTop: 40,
     // flex: 1,
     // paddingHorizontal: 24,
     // paddingBottom: 0,
     // backgroundColor: GlobalStyles.colors.primary700,
   },
-  infoText: {
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
     color: "white",
-    fontSize: 16,
+    marginVertical: 24,
     textAlign: "center",
-    marginTop: 32,
+  },
+  inputRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  rowInput: {
+    flex: 1,
   },
 });
