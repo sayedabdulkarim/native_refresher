@@ -1,18 +1,20 @@
 import { StyleSheet, Text, View } from "react-native";
 import ExpensesOutput from "../../component/expenseApp/ExpensesOutput";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ExpensesContext } from "../../store/context/expense_context";
 import { getDateMinusDays, getFormattedDate } from "../../utils/date";
 import { getStoreExpense } from "../../utils/https";
 
 const RecentExpenses = () => {
   const expensesCtx = useContext(ExpensesContext);
-
-  const recentExpenses = expensesCtx.expenses.filter((i) => {
+  //state
+  const [fetchedExpenses, setFetchedExpenses] = useState([]);
+  // const recentExpenses = expensesCtx.expenses.filter((i) => {
+  const recentExpenses = fetchedExpenses.filter((expense) => {
     const today = new Date();
     const date7daysAgo = getDateMinusDays(today, 7);
-
-    return i.date > date7daysAgo;
+    const expenseDate = new Date(expense.date);
+    return expenseDate > date7daysAgo;
   });
 
   useEffect(() => {
@@ -24,16 +26,18 @@ const RecentExpenses = () => {
           const expenseObj = {
             id: i,
             amount,
-            date: getFormattedDate(date),
+            date,
             description,
           };
           data.push(expenseObj);
         }
-        console.log({ data });
+        setFetchedExpenses(data);
+        // console.log({ data });
       })
       .catch((err) => console.log(err, " errr"));
   }, []);
 
+  console.log(fetchedExpenses);
   return (
     <ExpensesOutput
       periodName={"Last 7 days"}
