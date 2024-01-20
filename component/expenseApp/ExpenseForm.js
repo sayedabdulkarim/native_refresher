@@ -4,7 +4,13 @@ import { useState } from "react";
 import Button from "./Button";
 import { GlobalStyles } from "../../constants/styles";
 
-const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
+const ExpenseForm = ({
+  onCancel,
+  onSubmit,
+  isEditing,
+  selectedExpense,
+  expensesCtx,
+}) => {
   //state
   const [inputs, setInputs] = useState({
     amount: {
@@ -44,21 +50,21 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
     const dateIsValid = date.value.toString() !== "Invalid Date";
     const descriptionIsValid = description.value.trim().length > 0;
 
-    if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
-      //show
-      // Alert.alert("Invalid input, Please check your input values.");
-      setInputs((prev) => {
-        return {
-          amount: { value: prev.amount.value, isValid: amountIsValid },
-          date: { value: prev.date.value, isValid: dateIsValid },
-          description: {
-            value: prev.description.value,
-            isValid: descriptionIsValid,
-          },
-        };
-      });
-      return;
-    }
+    // if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
+    //   //show
+    //   // Alert.alert("Invalid input, Please check your input values.");
+    //   setInputs((prev) => {
+    //     return {
+    //       amount: { value: prev.amount.value, isValid: !amountIsValid },
+    //       date: { value: prev.date.value, isValid: !dateIsValid },
+    //       description: {
+    //         value: prev.description.value,
+    //         isValid: !descriptionIsValid,
+    //       },
+    //     };
+    //   });
+    //   return;
+    // }
 
     onSubmit(payload);
   };
@@ -70,7 +76,12 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
   //
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Your Expense</Text>
+      <Text
+        style={styles.title}
+        onPress={() => console.log({ expensesCtx, inputs })}
+      >
+        Your Expense
+      </Text>
       <View style={styles.inputRow}>
         <Input
           style={styles.rowInput}

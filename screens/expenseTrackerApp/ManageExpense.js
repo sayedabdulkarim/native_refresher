@@ -5,6 +5,7 @@ import { GlobalStyles } from "../../constants/styles";
 import Button from "../../component/expenseApp/Button";
 import { ExpensesContext } from "../../store/context/expense_context";
 import ExpenseForm from "../../component/expenseApp/ExpenseForm";
+import { storeExpense } from "../../utils/https";
 
 const ManageExpense = ({ route, navigation }) => {
   //misc
@@ -23,7 +24,7 @@ const ManageExpense = ({ route, navigation }) => {
   const handleConfirm = (data) => {
     isEditing
       ? expensesCtx.updateExpenses(expenseId, data)
-      : expensesCtx.addExpenses(data);
+      : (expensesCtx.addExpenses(data), storeExpense(data));
     navigation.goBack();
   };
   //asyn
@@ -36,6 +37,7 @@ const ManageExpense = ({ route, navigation }) => {
     <View style={styles.container}>
       {/*  */}
       <ExpenseForm
+        expensesCtx={expensesCtx}
         onCancel={handleCancel}
         onSubmit={handleConfirm}
         isEditing={isEditing}
