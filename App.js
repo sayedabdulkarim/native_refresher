@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 // import MealApp from "./screens/mealsApp";
 // import DrawerApp from "./screens/drawerApp";
 import AuthApp from "./screens/authApp";
-
+import FeatureApp from "./screens/fetauresApp";
 /**
  * for Meal App change bgColor to #24180f in app.json
  */
@@ -17,7 +17,8 @@ const App = () => {
       {/* <TargetApp /> */}
       {/* <MealApp /> */}
       {/* <DrawerApp /> */}
-      <AuthApp />
+      {/* <AuthApp /> */}
+      <FeatureApp />
     </View>
   );
 };

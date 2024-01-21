@@ -1,11 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const PlaceItem = () => {
+const PlaceItem = ({ place, onPress }) => {
   return (
-    <View>
-      <Text>PlaceItem</Text>
-    </View>
+    <Pressable onPress={onPress}>
+      <Image source={{ uri: place.imageUrl }} />
+      <View>
+        <Text>{place.title}</Text>
+        <Text>{place.address}</Text>
+      </View>
+    </Pressable>
   );
 };
 
