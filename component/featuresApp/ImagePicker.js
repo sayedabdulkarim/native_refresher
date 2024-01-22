@@ -6,6 +6,7 @@ import {
 } from "expo-image-picker";
 import { useState } from "react";
 import { Colors } from "../../constants/featureAppColors";
+import OutlineButton from "./OutlineButton";
 
 const ImagePicker = () => {
   //misc
@@ -61,13 +62,11 @@ const ImagePicker = () => {
 
   return (
     <View>
-      <Text
-        onPress={() => console.log({ pickedImage: pickedImage.assets[0].uri })}
-      >
-        Hello
-      </Text>
       <View style={styles.imagePreview}>{imagePreview}</View>
-      <Button title="Take Image" onPress={() => handleImage()} />
+      <OutlineButton onPress={handleImage} icon={"camera"}>
+        Take Image{" "}
+      </OutlineButton>
+      {/* <Button title="Take Image" onPress={() => handleImage()} /> */}
     </View>
   );
 };
