@@ -15,10 +15,10 @@ const LocationPicker = () => {
   const [mapRegion, setMapRegion] = useState({
     // latitude: 37.78825,
     // longitude: -122.4324,
-    latitude: 12.8884739,
-    longitude: 77.6533189,
-    // latitude: 0,
-    // longitude: 0,
+    // latitude: 12.8884739,
+    // longitude: 77.6533189,
+    latitude: 0,
+    longitude: 0,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
@@ -63,15 +63,15 @@ const LocationPicker = () => {
     setIsMapReady(true);
   };
 
-  //   useEffect(() => {
-  //     if (selectedLocation && isMapReady) {
-  //       setMapRegion({
-  //         ...mapRegion,
-  //         latitude: selectedLocation.latitude,
-  //         longitude: selectedLocation.longitude,
-  //       });
-  //     }
-  //   }, [selectedLocation, isMapReady]);
+  useEffect(() => {
+    if (selectedLocation && isMapReady) {
+      setMapRegion({
+        ...mapRegion,
+        latitude: selectedLocation.latitude,
+        longitude: selectedLocation.longitude,
+      });
+    }
+  }, [selectedLocation, isMapReady]);
 
   return (
     <View style={styles.container}>
@@ -87,7 +87,11 @@ const LocationPicker = () => {
           }}
         /> */}
         {selectedLocation && isMapReady && (
-          <MapView style={styles.map} initialRegion={mapRegion}>
+          <MapView
+            style={styles.map}
+            //   initialRegion={mapRegion}
+            region={selectedLocation && isMapReady ? mapRegion : undefined}
+          >
             <Marker coordinate={selectedLocation} />
           </MapView>
         )}
